@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" type="x-icon" href="loggg.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link rel="stylesheet" href="about.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        #aboutVideo {
+            width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+   <video id="aboutVideo" autoplay controls src="clip3.mp4"></video>
+</body>
+<script>
+    var video = document.getElementById('aboutVideo');
+    video.onended = function() {
+        this.pause();
+        this.removeAttribute('autoplay');
+        this.removeAttribute('loop');
+    };
+</script>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" type="x-icon" href="loggg.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="utils.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="mobile.css">
+    <title>iBlog - Heaven for bloggers</title>
+</head>
+<body>
+    <nav class="navigation max-width-1 m-auto">
+        <div class="nav-left">
+            <a href="/">
+                <span><img src="logo.png" width="94px" alt="iBlog Logo"></span>
+            </a>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div class="nav-right">
+            <form id="searchForm">
+                <input class="form-input" type="text" name="query" id="searchInput" placeholder="Article Search" list="search-suggestions" aria-label="Search">
+                <datalist id="search-suggestions">
+                    <option value="Music">
+                    <option value="Inspiration">
+                </datalist>
+                <button class="btn" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+
+    <div class="max-width-1 m-auto"><hr></div>
+    <div class="home-articles max-width-1 m-auto font2">
+        <h2>Search Results for Django (0.03 seconds)</h2>
+        <div class="year-box adjust-year">
+            <div>
+                <h3>Year</h3>
+            </div>
+            <div>
+                <input type="radio" name="year" id="year-2020"> 2020
+            </div>
+            <div>
+                <input type="radio" name="year" id="year-2021"> 2021
+            </div>
+        </div>
+        <div class="home-article">
+            <div class="home-article-img">
+                <img src="11.svg" alt="article">
+            </div>
+            <div class="home-article-content font1">
+                <a href="blogpost.html"><h3>Lorem ipsum dolor sit amet consectetur adipisicing.</h3></a>
+                <span>Author Name</span>
+                <span>07 January | 6 min read</span>
+            </div>
+        </div>
+        <!-- Repeat home-article divs as necessary -->
+    </div>
+
+    <div class="footer">
+        <p>Copyright &copy; iBlog.com</p>
+        <a href="https://www.vecteezy.com/free-vector/typewriter">Vector Credits: Vecteezy</a>
+    </div>
+
+    <script>
+        document.getElementById('searchForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const pages = {
+                
+                "music": "music.html",
+                "inspiration": "inspiration.html",
+               
+            };
+
+            if (query in pages) {
+                window.location.href = pages[query];
+            } else {
+                alert('No page found for the selected query.');
+            }
+        });
+    </script>
+</body>
+</html>

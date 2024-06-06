@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" type="x-icon" href="loggg.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="utils.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="contact.css">
+    <link rel="stylesheet" href="mobile.css">
+    <title>iBlog - Heaven for bloggers</title>
+    <style>
+        h1, h2, h3, h4, h5, h6, p, b {
+            color: #FC1568;
+        }
+
+        .form-input {
+            border: 1px solid #FC1568;
+        }
+
+        .font1 {
+            color: #FC1568;
+        }
+
+        .home-articles h2 {
+            color: #FC1568;
+        }
+
+        .home-article-content h3 {
+            color: #FC1568;
+        }
+
+        .nav-left a, .nav-left ul li a {
+            color: #FC1568;
+        }
+
+        .form-input::placeholder {
+            color: #FC1568;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background: black;
+            color: #FC1568;
+        }
+
+        .footer-section {
+            display: inline-block;
+            margin: 20px;
+            vertical-align: top;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 10px;
+            color: #FC1568;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section ul li a {
+            text-decoration: none;
+            color: #FC1568;
+        }
+
+        .footer-section ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: black;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-left img {
+            width: 50px;
+            margin-right: 20px;
+        }
+
+        .nav-left ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-left ul li {
+            margin-right: 20px;
+        }
+
+        .nav-left ul li a {
+            text-decoration: none;
+            color: #FC1568;
+        }
+
+        .nav-left ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .colored-line {
+            height: 2px;
+            background-color: #FC1568;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body bgcolor="black">
+    <nav class="navigation max-width-1 m-auto">
+        <div class="nav-left">
+            <a href="index2.html">
+                <span><img src="loggg.png" width="94px" alt=""></span>
+            </a>
+            <ul>
+                <li><a href="index2.html">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div class="nav-right">
+            <form id="searchForm">
+                <input class="form-input" type="text" name="query" id="searchInput" placeholder="Article Search" list="search-suggestions" aria-label="Search">
+                <datalist id="search-suggestions">
+                    <option value="Music">
+                    <option value="Inspiration">
+                </datalist>
+                <button class="btn" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+
+    <div class="max-width-1 m-auto">
+        <div class="max-width-1 m-auto">    
+            <div class="colored-line"></div>
+        </div>
+        <div class="contact-content font1 max-width-1 m-auto">
+            <div class="max-width-1 m-auto mx-1">
+                <h2>Feel Free to Contact Us</h2>
+                <div class="contact-form">
+                    <div class="form-box">
+                        <input id="name" type="text" placeholder="Enter Your Name">
+                    </div>
+                    <div class="form-box">
+                        <input id="phone" type="text" placeholder="Enter Your Phone Number">
+                    </div>
+                    <div class="form-box">
+                        <input id="email" type="text" placeholder="Enter Your Email Id">
+                    </div>
+                    <div class="form-box">
+                        <textarea id="message" cols="30" rows="10" placeholder="How may we help you?"></textarea>
+                    </div>
+                    <div class="form-box">
+                        <button class="btn" onclick="validateForm()">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="max-width-1 m-auto">
+            <div class="colored-line"></div>
+        </div>
+        <div class="footer">
+            <p>Copyright &copy; Genre.com </p>
+        </div>
+    </div>
+
+    <script>
+        function validateForm() {
+            var name = document.getElementById('name').value;
+            var phone = document.getElementById('phone').value;
+            var email = document.getElementById('email').value;
+            var message = document.getElementById('message').value;
+
+            var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            var namePattern = /^[A-Za-z\s]+$/;
+            var phonePattern = /^\d+$/;
+
+            if (name === "" || phone === "" || email === "" || message === "") {
+                alert("Please fill all the fields");
+            } else if (!namePattern.test(name)) {
+                alert("Please enter a valid name (alphabets only)");
+            } else if (!phonePattern.test(phone)) {
+                alert("Please enter a valid phone number (digits only)");
+            } else if (!emailPattern.test(email)) {
+                alert("Please enter a valid email address");
+            } else {
+                alert("Thank you for your suggestion and have a good day");
+            }
+        }
+
+        document.getElementById('searchForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const pages = {
+                "music": "music.html",
+                "inspiration": "inspiration.html",
+            };
+
+            if (query in pages) {
+                window.location.href = pages[query];
+            } else {
+                alert('No page found for the selected query.');
+            }
+        });
+    </script>
+</body>
+</html>
